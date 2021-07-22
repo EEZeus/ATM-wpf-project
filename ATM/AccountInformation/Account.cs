@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
+using ATM.FileProcessing;
 
-namespace ATM
+namespace ATM.AccountInformation
 {
     public class Account
     {
+        
+        private string _password;
         private float _balance;
         public string Name { get; set; }
         public string Id { get; set; }
         public long Phone { get; set; }
-
         public Account()
         {
             
@@ -30,7 +31,15 @@ namespace ATM
                     _balance = value;
             }
         }
-
+        public string Password
+        {
+            get => _password;
+            set
+            {
+                if (value.Length > 4)
+                    _password = value;
+            }
+        }
         public static Account Parse(string info)
         {
             var infoList = info.Split("#");

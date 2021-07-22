@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
+using ATM.AccountInformation;
 
-namespace ATM
+namespace ATM.FileProcessing
 {
     public class FileProcessor
     {
