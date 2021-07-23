@@ -5,8 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ATM"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="ATM" Height="450" Width="800">
+    <Grid x:Name="Main" OpacityMask="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}" Background="#E1010215"/>
 </Window>

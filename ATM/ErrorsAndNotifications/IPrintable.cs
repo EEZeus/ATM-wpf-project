@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace ATM.ErrorsAndNotifications
@@ -13,7 +14,7 @@ namespace ATM.ErrorsAndNotifications
         {
             using (var out_file = File.AppendText(@"Operation_Notifications"))
             {
-               await out_file.WriteLineAsync(string.Format("Notification :\n{0}\n---------------------------------\n",notification));
+               await out_file.WriteLineAsync(string.Format("Notification !\tTime : {0}\n{1}\n---------------------------------\n",DateTime.Now.ToLongDateString(),notification));
             }
         }
     }
@@ -23,7 +24,7 @@ namespace ATM.ErrorsAndNotifications
         {
             using (var out_file = File.AppendText(@"Operation_Errors"))
             {
-                await out_file.WriteLineAsync(string.Format("Error :\n{0}\n---------------------------------\n", error));
+                await out_file.WriteLineAsync(string.Format("Error !\tTime : {0}\n{1}\n---------------------------------\n", DateTime.Now.ToLongDateString(), error));
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Microsoft.VisualBasic;
 
 namespace ATM.ErrorsAndNotifications
 {
@@ -10,14 +11,14 @@ namespace ATM.ErrorsAndNotifications
     {
         public  void Show(string notification)
         {
-            MessageBox.Show(notification,"Attention",MessageBoxButton.OK,MessageBoxImage.Information);
+            MessageBox.Show(DateAndTime.Now.ToLongDateString() + "\n" + notification,"Attention",MessageBoxButton.OK,MessageBoxImage.Information);
         }
     }
     public class ShowError : IShowable
     {
         public  void Show(string error)
         {
-            MessageBox.Show(error, "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(DateAndTime.Now.ToLongDateString()+"\n"+error, "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }
