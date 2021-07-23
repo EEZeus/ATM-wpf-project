@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ATM.AccountInformation;
+using ATM.ErrorsAndNotifications;
 
 namespace ATM
 {
@@ -25,11 +26,51 @@ namespace ATM
         public MainWindow()
         {
             InitializeComponent();
-       /*     Account.CreateAcc("Ehsan", "2950250955", +989222129155, 1000);
-            Account.CreateAcc("Ehsan", "295025955", +989222129155, 1000);
-            Account.CreateAcc("Ehsan", "29500955", +989222129155, 1000);*/
+            gridCreateAccount.Visibility = Visibility.Hidden;
+        }
 
-          Account.DeleteAcc("2950250955");
+        private void buttonCreateAccount_Click(object sender, RoutedEventArgs e)
+        {
+            gridCreateAccount.Visibility = Visibility.Visible;
+        }
+
+        private void buttonAlreadyHaveAccount_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void buttonExitMain_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void buttonGridCreateAccountBack_Click(object sender, RoutedEventArgs e)
+        {
+            gridCreateAccount.Visibility = Visibility.Hidden;
+        }
+        private void buttonGridCreateAccountSubmitCreation_Click(object sender, RoutedEventArgs e)
+        {
+            if (textBoxName.Text == string.Empty)
+            {
+                new ShowError().Show("Name Box Is Empty !");
+            }
+            else if (textBoxId.Text == string.Empty)
+            {
+                new ShowError().Show("Id Box Is Empty !");
+
+            }
+            else if (textBoxPhone.Text == string.Empty)
+            {
+                new ShowError().Show("Phone Box Is Empty !");
+
+            }
+            else
+            {
+                Account.CreateAcc(textBoxName.Text,textBoxId.Text,Convert.ToInt64(textBoxPhone.Text));
+                gridCreateAccount.Visibility = Visibility.Hidden;
+                textBoxName.Clear();
+                textBoxId.Clear();
+                textBoxPhone.Clear();
+            }
         }
     }
 }

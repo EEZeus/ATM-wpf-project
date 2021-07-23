@@ -5,6 +5,89 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ATM"
         mc:Ignorable="d"
-        Title="ATM" Height="450" Width="800">
-    <Grid x:Name="Main" OpacityMask="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}" Background="#E1010215"/>
+        Title="ATM" Height="600" Width="800" ResizeMode="NoResize" Icon="/57426.png" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="Main" OpacityMask="#FF080B27" RenderTransformOrigin="0.5,0.5" Background="#DF040413" Width="800" Height="600" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="0.046"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="57*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="456*"/>
+            <ColumnDefinition Width="187*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="buttonCreateAccount" Content="Create Account" Margin="0,227,0,332" RenderTransformOrigin="0.5,0.5" Background="#B2110F0F" Foreground="White" BorderBrush="#FF1F2031" FontFamily="Microsoft Sans Serif" FontSize="24" Click="buttonCreateAccount_Click" Grid.Column="2" HorizontalAlignment="Center" Width="278" d:IsLocked="True">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="1.153"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.433"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="buttonAlreadyHaveAccount" Content="Already Have Account" Margin="0,333,0,226" RenderTransformOrigin="0.5,0.5" Background="#B2110F0F" Foreground="White" BorderBrush="#FF1F2031" FontFamily="Microsoft Sans Serif" FontSize="24" Click="buttonAlreadyHaveAccount_Click" Grid.Column="2" HorizontalAlignment="Center" Width="278" d:IsLocked="True">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="1.153"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.433"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="buttonExitMain" Content="Exit" Margin="11,544,11,15" RenderTransformOrigin="0.5,0.5" Background="#B2FFFFFF" Foreground="#FF1F2031" BorderBrush="White" FontFamily="Microsoft Sans Serif" FontSize="24" Grid.Column="3" Click="buttonExitMain_Click" d:IsLocked="True">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="1.153"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.433"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Grid x:Name="gridCreateAccount" Width="800" Grid.ColumnSpan="4" Margin="0,2,-1,-2" Background="#FF0A0A1D" HorizontalAlignment="Right">
+            <Button x:Name="buttonGridCreateAccountBack" Content="Back" HorizontalAlignment="Left" Margin="657,540,0,0" VerticalAlignment="Top" Height="41" Width="126" Foreground="#FF0A0A1D" FontSize="24" Click="buttonGridCreateAccountBack_Click"/>
+            <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Margin="315,186,0,382" TextWrapping="Wrap" Width="300" Height="32" FontSize="24" Background="White" FontFamily="Microsoft Sans Serif" TextAlignment="Left" UndoLimit="1000" AutomationProperties.HelpText="Name : " RenderTransformOrigin="0.5,0.5">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.285"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Label Content="Account Information" HorizontalAlignment="Left" Margin="22,23,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Microsoft Sans Serif" OpacityMask="#FF0A0A1D" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="46" Width="348"/>
+            <Label Content="Name :" HorizontalAlignment="Left" Margin="187,182,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Microsoft Sans Serif" OpacityMask="#FF0A0A1D" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="44" Width="113"/>
+            <TextBox x:Name="textBoxId" HorizontalAlignment="Left" Margin="315,250,0,318" TextWrapping="Wrap" Width="300" Height="32" FontSize="24" Background="White" FontFamily="Microsoft Sans Serif" TextAlignment="Left" UndoLimit="1000" AutomationProperties.HelpText="Name : " RenderTransformOrigin="0.5,0.5">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.285"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Label Content="Id :" HorizontalAlignment="Left" Margin="187,244,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Microsoft Sans Serif" OpacityMask="#FF0A0A1D" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="46" Width="113"/>
+            <TextBox x:Name="textBoxPhone" Margin="315,316,0,252" TextWrapping="Wrap" Height="32" FontSize="24" Background="White" FontFamily="Microsoft Sans Serif" TextAlignment="Left" UndoLimit="1000" AutomationProperties.HelpText="Name : " RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="300">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.285"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Label Content="Phone :" HorizontalAlignment="Left" Margin="187,311,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Microsoft Sans Serif" OpacityMask="#FF0A0A1D" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="46" Width="113"/>
+            <Button x:Name="buttonGridCreateAccountSubmitCreation" Content="Create" Margin="426,386,0,0" VerticalAlignment="Top" Height="40" FontSize="24" FontFamily="Microsoft Sans Serif" Background="#B2110F0F" Foreground="White" BorderBrush="#FF0A0A1D" HorizontalAlignment="Left" Width="189" Click="buttonGridCreateAccountSubmitCreation_Click"/>
+        </Grid>
+    </Grid>
 </Window>

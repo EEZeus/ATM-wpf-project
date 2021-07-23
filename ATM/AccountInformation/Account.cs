@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using ATM.ErrorsAndNotifications;
 using ATM.FileProcessing;
 
 namespace ATM.AccountInformation
@@ -50,9 +51,10 @@ namespace ATM.AccountInformation
             return new Account(name, id, long.Parse(phone), float.Parse(balance));
         }
 
-        public static void CreateAcc(string name, string id, long phone, float balance)
+        public static void CreateAcc(string name, string id, long phone, float balance = 0)
         {
             FileProcessor.SaveInfo(new Account(name, id, phone, balance));
+            new ShowNotification().Show("Account Was Created Successfully.");
         }
 
         public static void DeleteAcc(string id)
@@ -66,6 +68,7 @@ namespace ATM.AccountInformation
                    FileProcessor.SaveInfo(acc);
                }
            }
+           new ShowNotification().Show("Account Was Deleted Successfully.");
         }
     }
 }
