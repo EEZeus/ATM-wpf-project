@@ -44,26 +44,33 @@ namespace ATM.AccountInformation
         public static Account Parse(string info)
         {
             var infoList = info.Split("#");
-            var id = infoList[0].Substring(2);
-            var name = infoList[1].Substring(4);
-            var phone = infoList[2].Substring(5);
-            var balance = infoList[3].Substring(7);
+            var id = infoList[0].Substring(3);
+            var name = infoList[1].Substring(5);
+            var phone = infoList[2].Substring(6);
+            var balance = infoList[3].Substring(8);
             return new Account(name, id, long.Parse(phone), float.Parse(balance));
         }
 
         public static void CreateAcc(string name, string id, long phone, float balance = 0)
         {
-            FileProcessor.SaveInfo(new Account(name, id, phone, balance));
+            var temp = new Account(name, id, phone, balance);
+            if(!Security.Security.AccountIsAlreadyExist(temp)){
+            FileProcessor.SaveInfo(temp);
             new ShowNotification().Show("Account Was Created Successfully.");
+            }
+            else
+            {
+                new ShowError().Show("Account With Same Id Already Exists.");
+            }
         }
 
-        public static void DeleteAcc(string id)
+        public static void DeleteAcc(Account user)
         {
             var accList = FileProcessor.ListingAccounts();
             File.Delete(@"Account_Info.txt");
            foreach (var acc in accList)
            {
-               if (acc.Id != id)
+               if (acc.Id != user.Id)
                {
                    FileProcessor.SaveInfo(acc);
                }

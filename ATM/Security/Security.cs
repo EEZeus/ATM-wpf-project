@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Automation.Peers;
 using ATM.AccountInformation;
 using ATM.ErrorsAndNotifications;
+using ATM.FileProcessing;
 
 namespace ATM.Security
 {
@@ -43,6 +44,18 @@ namespace ATM.Security
         public static void SecurityAlert(string Alert)
         {
             new ShowNotification().Show("Security Alert : "+Alert);
+        }
+
+        public static bool AccountIsAlreadyExist(Account acc)
+        {
+            if (FileProcessor.GetInfo(acc.Id) != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

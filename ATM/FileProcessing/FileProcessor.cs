@@ -24,7 +24,7 @@ namespace ATM.FileProcessing
                 while ((line = in_file.ReadLine()) != null)
                 {
                     var splitedLine = line.Split("#");
-                    if (splitedLine[0].Substring(2) == id)
+                    if (splitedLine[0].Substring(3) == id)
                     {
                         return Account.Parse(line);
                     }
