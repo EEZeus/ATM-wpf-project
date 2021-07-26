@@ -27,6 +27,7 @@ namespace ATM
         {
             InitializeComponent();
             gridCreateAccount.Visibility = Visibility.Hidden;
+            GridAlreadyHaveAccount.Visibility = Visibility.Hidden;
         }
 
         private void buttonCreateAccount_Click(object sender, RoutedEventArgs e)
@@ -36,6 +37,8 @@ namespace ATM
 
         private void buttonAlreadyHaveAccount_Click(object sender, RoutedEventArgs e)
         {
+            GridAlreadyHaveAccount.Visibility = Visibility.Visible;
+
         }
 
         private void buttonExitMain_Click(object sender, RoutedEventArgs e)
@@ -62,15 +65,67 @@ namespace ATM
             {
                 new ShowError().Show("Phone Box Is Empty !");
 
+            }else if (passwordBoxPassword.Password == string.Empty)
+            {
+                new ShowError().Show("Password Box Is Empty !");
+            }
+            else if (passwordBoxPassword.Password.Length < 4)
+            {
+                new ShowError().Show("Password Is Less Than 4 Characters !");
             }
             else
             {
-                Account.CreateAcc(textBoxName.Text,textBoxId.Text,Convert.ToInt64(textBoxPhone.Text));
-                gridCreateAccount.Visibility = Visibility.Hidden;
+                Account.CreateAcc(textBoxName.Text,textBoxId.Text,passwordBoxPassword.Password,Convert.ToInt64(textBoxPhone.Text));
                 textBoxName.Clear();
                 textBoxId.Clear();
                 textBoxPhone.Clear();
+                passwordBoxPassword.Clear();
             }
+        }
+
+        private void buttonAlreadyHaveAccountGridLogin_Click(object sender, RoutedEventArgs e)
+        {
+            if (textBoxLoginId.Text == string.Empty)
+            {
+                new ShowError().Show("Id Box Is Empty !");
+            }
+            else if (passwordBoxLoginPassword.Password == string.Empty)
+            {
+                new ShowError().Show("Password Box Is Empty !");
+            }
+            else
+            {
+                var temp = FileProcessing.FileProcessor.GetInfo(textBoxLoginId.Text);
+                if (temp != null)
+                {
+                    if (Security.Security.UserConfirmation(temp,passwordBoxLoginPassword.Password))
+                    {
+                        if (!Security.Security.isBanned(temp))
+                        {
+                            new ShowNotification().Show("Logged In Successfully .\nWelcome " + temp.Name);
+                            Account.CurrentAcc = temp;
+                        }
+                        else
+                        {
+                            new ShowError().Show("Account is Temporarily Banned !");
+                        }
+                    }
+                    else
+                    {
+                        new ShowError().Show("Wrong Password !");
+                    }
+                }
+                else
+                {
+                    new ShowError().Show("Account With Entered Id Doesn't Exist !");
+
+                }
+            }
+        }
+
+        private void buttonAlreadyHaveAccountGridBack_Click(object sender, RoutedEventArgs e)
+        {
+            GridAlreadyHaveAccount.Visibility = Visibility.Hidden;
         }
     }
 }

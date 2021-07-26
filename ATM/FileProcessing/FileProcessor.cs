@@ -12,7 +12,7 @@ namespace ATM.FileProcessing
         {
             using (var out_file = File.AppendText(@"Account_Info.txt"))
             {
-                await out_file.WriteLineAsync("id$"+account.Id+"#name$"+account.Name+"#Phone$"+account.Phone+"#balance$"+account.Balance);
+                await out_file.WriteLineAsync("id$"+account.Id+"#password$"+account.Password+"#name$"+account.Name+"#Phone$"+account.Phone+"#balance$"+account.Balance);
             }
         }
 
@@ -43,10 +43,11 @@ namespace ATM.FileProcessing
                 {
                     var infoList = line.Split("#");
                     var id = infoList[0].Substring(3);
-                    var name = infoList[1].Substring(5);
-                    var phone = infoList[2].Substring(6);
-                    var balance = infoList[3].Substring(8);
-                    accountsList.Add(new Account(name, id, Convert.ToInt64(phone), Convert.ToSingle(balance)));
+                    var password = infoList[1].Substring(9);
+                    var name = infoList[2].Substring(5);
+                    var phone = infoList[3].Substring(6);
+                    var balance = infoList[4].Substring(8);
+                    accountsList.Add(new Account(name, id,password, Convert.ToInt64(phone), Convert.ToSingle(balance)));
                 }
             }
 
