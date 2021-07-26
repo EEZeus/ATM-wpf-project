@@ -1,5 +1,5 @@
 ﻿//################################################
-//## Author : Ehsan Espandar , github : EEzeus  ##
+//## Author : Ehsan Espandar , github : EEZeus  ##
 //################################################
 using System.IO;
 using System.Runtime.CompilerServices;
