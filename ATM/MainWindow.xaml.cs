@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.DirectoryServices;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//################################################
+//## Author : Ehsan Espandar , github : EEzeus  ##
+//################################################
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ATM.AccountInformation;
 using ATM.ErrorsAndNotifications;
 
@@ -28,6 +18,11 @@ namespace ATM
             InitializeComponent();
             gridCreateAccount.Visibility = Visibility.Hidden;
             GridAlreadyHaveAccount.Visibility = Visibility.Hidden;
+            GridOperations.Visibility = Visibility.Hidden;
+            GridTransferMoney.Visibility = Visibility.Hidden;
+            GridWithDraw.Visibility = Visibility.Hidden;
+            GridDeposit.Visibility = Visibility.Hidden;
+
         }
 
         private void buttonCreateAccount_Click(object sender, RoutedEventArgs e)
@@ -76,6 +71,7 @@ namespace ATM
             else
             {
                 Account.CreateAcc(textBoxName.Text,textBoxId.Text,passwordBoxPassword.Password,Convert.ToInt64(textBoxPhone.Text));
+                new ShowNotification().Show("Account Was Created Successfully.");
                 textBoxName.Clear();
                 textBoxId.Clear();
                 textBoxPhone.Clear();
@@ -104,6 +100,9 @@ namespace ATM
                         {
                             new ShowNotification().Show("Logged In Successfully .\nWelcome " + temp.Name);
                             Account.CurrentAcc = temp;
+                            GridOperations.Visibility = Visibility.Visible;
+                            textBoxLoginId.Clear();
+                            passwordBoxLoginPassword.Clear();
                         }
                         else
                         {
@@ -127,5 +126,88 @@ namespace ATM
         {
             GridAlreadyHaveAccount.Visibility = Visibility.Hidden;
         }
+
+        private void buttonOperationsBack_Click(object sender, RoutedEventArgs e)
+        {
+            GridOperations.Visibility = Visibility.Hidden;
+        }
+
+        private void buttonOperationsShowPrintBalance_Click(object sender, RoutedEventArgs e)
+        {
+            BankingOperations.Operation.GetBalance(Account.CurrentAcc);
+        }
+
+        private void buttonOperationsTransferMoney_Click(object sender, RoutedEventArgs e)
+        {
+            GridTransferMoney.Visibility = Visibility.Visible;
+            textBoxMoneyTransferAmount.Clear();
+            textBoxMoneyTransferDestinationId.Clear();
+        }
+
+        private void buttonOperationsWithdraw_Click(object sender, RoutedEventArgs e)
+        {
+            GridWithDraw.Visibility = Visibility.Visible;
+            textBoxWithdrawAmount.Clear();
+        }
+
+        private void buttonOperationsDeposit_Click(object sender, RoutedEventArgs e)
+        {
+            GridDeposit.Visibility = Visibility.Visible;
+
+        }
+
+        private void buttonGridMoneyTransferBack_Click(object sender, RoutedEventArgs e)
+        {
+            GridTransferMoney.Visibility = Visibility.Hidden;
+
+        }
+
+        private void buttonGridMoneyTransferTransfer_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                BankingOperations.Operation.MoneyTransfer(Account.CurrentAcc, textBoxMoneyTransferDestinationId.Text,
+                    Convert.ToSingle(textBoxMoneyTransferAmount.Text));
+                GridTransferMoney.Visibility = Visibility.Hidden;
+            }
+            catch (Exception)
+            {
+                new ShowError().Show("Something Went Wrong With TexBoxes !");
+            }
+        }
+
+        private void buttonGridWithdrawWithdraw_Click(object sender, RoutedEventArgs e)
+        {
+            BankingOperations.Operation.Withdraw(Account.CurrentAcc, Convert.ToSingle(textBoxWithdrawAmount.Text));
+            GridWithDraw.Visibility = Visibility.Hidden;
+        }
+
+        private void buttonGridWithdrawBack_Click(object sender, RoutedEventArgs e)
+        {
+            GridWithDraw.Visibility = Visibility.Hidden;
+        }
+
+        private void buttonGridDepositDeposit_Click(object sender, RoutedEventArgs e)
+        {
+            BankingOperations.Operation.Deposit(Account.CurrentAcc,Convert.ToSingle(textBoxDepositAmount.Text));
+            GridDeposit.Visibility = Visibility.Hidden;
+        }
+        private void buttonGridDepositBack_Click(object sender, RoutedEventArgs e)
+        {
+            GridDeposit.Visibility = Visibility.Hidden;
+        }
+
+        private void buttonOperationsDeleteAccount_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show( "Are You Sure You Want To Delete Your Account?", "Delete Account !",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                Account.DeleteAcc(Account.CurrentAcc);
+                new ShowNotification().Show(Account.CurrentAcc.Name +"Account Was Deleted Successfully.\n Amount "+Account.CurrentAcc.Balance+"Was Given To "+Account.CurrentAcc.Name);
+                new PrintNotification().Print(Account.CurrentAcc.Name + "Account Was Deleted Successfully.\n Amount " + Account.CurrentAcc.Balance.ToString("C") + " Was Given To " + Account.CurrentAcc.Name);
+
+            }
+        }
     }
+
 }

@@ -45,7 +45,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="buttonExitMain" Content="Exit" Margin="11,524,11,15" RenderTransformOrigin="0.5,0.5" Background="#B2FFFFFF" Foreground="#FF1F2031" BorderBrush="White" FontFamily="Microsoft Sans Serif" FontSize="24" Grid.Column="3" Click="buttonExitMain_Click" d:IsLocked="True" Grid.Row="1">
+        <Button x:Name="buttonExitMain" Content="Exit" Margin="11,524,11,15" RenderTransformOrigin="0.5,0.5" Background="#B2FFFFFF" Foreground="#FF1F2031" BorderBrush="#FF040404" FontFamily="Microsoft Sans Serif" FontSize="24" Grid.Column="3" Click="buttonExitMain_Click" Grid.Row="1">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -56,7 +56,7 @@
             </Button.RenderTransform>
         </Button>
         <Grid x:Name="gridCreateAccount" Grid.ColumnSpan="4" Background="#FF0A0A1D" Height="Auto" d:IsHidden="True" Grid.RowSpan="2">
-            <Button x:Name="buttonGridCreateAccountBack" Content="Back" HorizontalAlignment="Left" Margin="657,540,0,0" VerticalAlignment="Top" Height="41" Width="126" Foreground="#FF0A0A1D" FontSize="24" Click="buttonGridCreateAccountBack_Click" Background="#B2FFFFFF" d:IsLocked="True"/>
+            <Button x:Name="buttonGridCreateAccountBack" Content="Back" HorizontalAlignment="Left" Margin="657,540,0,0" VerticalAlignment="Top" Height="41" Width="126" Foreground="#FF0A0A1D" FontSize="24" Click="buttonGridCreateAccountBack_Click" Background="#B2FFFFFF" BorderBrush="#FF040404"/>
             <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Margin="320,230,0,338" TextWrapping="Wrap" Width="300" Height="32" FontSize="24" Background="White" FontFamily="Microsoft Sans Serif" TextAlignment="Left" UndoLimit="1000" AutomationProperties.HelpText="Name : " RenderTransformOrigin="0.5,0.5">
                 <TextBox.RenderTransform>
                     <TransformGroup>
@@ -111,11 +111,41 @@
             <Label Content="ID :" HorizontalAlignment="Left" Margin="163,202,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Microsoft Sans Serif" OpacityMask="#FF0A0A1D" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="36" Width="58"/>
             <Label Content="Password :" HorizontalAlignment="Left" Margin="163,302,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Microsoft Sans Serif" OpacityMask="#FF0A0A1D" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="36" Width="141"/>
             <Button x:Name="buttonAlreadyHaveAccountGridLogin" Content="Log In" HorizontalAlignment="Left" Margin="443,388,0,0" VerticalAlignment="Top" Width="186" Height="45" FontSize="24" Background="Black" Foreground="#FFE7E7EE" Click="buttonAlreadyHaveAccountGridLogin_Click"/>
-            <Button x:Name="buttonAlreadyHaveAccountGridBack" Content="Back" HorizontalAlignment="Left" Margin="635,540,0,0" VerticalAlignment="Top" Width="143" Height="45" FontSize="24" Background="#B2FFFFFF" Foreground="Black" Click="buttonAlreadyHaveAccountGridBack_Click"/>
-            <Grid x:Name="GridOperations" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto">
+            <Button x:Name="buttonAlreadyHaveAccountGridBack" Content="Back" HorizontalAlignment="Left" Margin="635,540,0,0" VerticalAlignment="Top" Width="143" Height="45" FontSize="24" Background="#B2FFFFFF" Foreground="#FF0A0A1D" Click="buttonAlreadyHaveAccountGridBack_Click" FontFamily="Microsoft Sans Serif" BorderBrush="Black"/>
+            <Grid x:Name="GridOperations" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid.Background>
                     <SolidColorBrush Color="#FF0A0A1D"/>
                 </Grid.Background>
+                <Button x:Name="buttonOperationsShowPrintBalance" Content="Show and Print Balance" HorizontalAlignment="Left" Margin="195,134,0,0" VerticalAlignment="Top" Height="56" Width="390" Background="Black" BorderBrush="#FFF9F9F9" Foreground="White" FontSize="24" FontFamily="Microsoft Sans Serif" Click="buttonOperationsShowPrintBalance_Click"/>
+                <Label Content="Operations :" HorizontalAlignment="Left" Margin="22,23,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Microsoft Sans Serif" OpacityMask="#FF0A0A1D" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="63" Width="348"/>
+                <Button x:Name="buttonOperationsTransferMoney" Content="Transfer Money" HorizontalAlignment="Left" Margin="195,213,0,0" VerticalAlignment="Top" Height="56" Width="390" Background="Black" BorderBrush="#FFF9F9F9" Foreground="White" FontSize="24" FontFamily="Microsoft Sans Serif" Click="buttonOperationsTransferMoney_Click"/>
+                <Button x:Name="buttonOperationsWithdraw" Content="Withdraw" HorizontalAlignment="Left" Margin="195,290,0,0" VerticalAlignment="Top" Height="56" Width="390" Background="Black" BorderBrush="#FFF9F9F9" Foreground="White" FontSize="24" FontFamily="Microsoft Sans Serif" Click="buttonOperationsWithdraw_Click"/>
+                <Button x:Name="buttonOperationsDeposit" Content="Deposit" HorizontalAlignment="Left" Margin="195,367,0,0" VerticalAlignment="Top" Height="56" Width="390" Background="Black" BorderBrush="#FFF9F9F9" Foreground="White" FontSize="24" FontFamily="Microsoft Sans Serif" Click="buttonOperationsDeposit_Click"/>
+                <Button x:Name="buttonOperationsDeleteAccount" Content="Delete Account" HorizontalAlignment="Left" Margin="195,446,0,0" VerticalAlignment="Top" Height="56" Width="390" Background="Black" BorderBrush="#FFF9F9F9" Foreground="White" FontSize="24" FontFamily="Microsoft Sans Serif" Click="buttonOperationsDeleteAccount_Click"/>
+                <Button x:Name="buttonOperationsBack" Content="Back" HorizontalAlignment="Left" Margin="628,536,0,0" VerticalAlignment="Top" Height="48" Width="153" Background="#B2FFFFFF" BorderBrush="#FF0C0101" Foreground="#FF0A0A1D" FontSize="24" FontFamily="Microsoft Sans Serif" Click="buttonOperationsBack_Click"/>
+                <Grid x:Name="GridTransferMoney" Background="#FF0A0A1D" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto">
+                    <Label Content="Money Transfer :" HorizontalAlignment="Left" Margin="22,23,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Microsoft Sans Serif" OpacityMask="#FF0A0A1D" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="63" Width="348"/>
+                    <TextBox x:Name="textBoxMoneyTransferDestinationId" HorizontalAlignment="Left" Margin="295,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="434" Height="45" FontSize="24"/>
+                    <Label Content="Destination Id :" HorizontalAlignment="Left" Margin="61,195,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Microsoft Sans Serif" OpacityMask="#FF0A0A1D" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="40" Width="199"/>
+                    <TextBox x:Name="textBoxMoneyTransferAmount" Margin="295,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Height="45" FontSize="24" HorizontalAlignment="Left" Width="434"/>
+                    <Label Content="Amount(in dollors):" HorizontalAlignment="Left" Margin="61,284,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Microsoft Sans Serif" OpacityMask="#FF0A0A1D" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="40" Width="214"/>
+                    <Button x:Name="buttonGridMoneyTransferTransfer" Content="Transfer" Margin="543,362,0,0" VerticalAlignment="Top" Height="45" FontSize="24" Background="Black" Foreground="#FFE7E7EE" HorizontalAlignment="Left" Width="186" Click="buttonGridMoneyTransferTransfer_Click"/>
+                    <Button x:Name="buttonGridMoneyTransferBack" Content="Back" HorizontalAlignment="Left" Margin="628,536,0,0" VerticalAlignment="Top" Height="48" Width="153" Background="#B2FFFFFF" BorderBrush="#FF0C0101" Foreground="#FF0A0A1D" FontSize="24" FontFamily="Microsoft Sans Serif" Click="buttonGridMoneyTransferBack_Click"/>
+                </Grid>
+                <Grid x:Name="GridWithDraw" Background="#FF0A0A1D" Height="Auto" Width="Auto">
+                    <Label Content="Withdraw :" HorizontalAlignment="Left" Margin="22,23,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Microsoft Sans Serif" OpacityMask="#FF0A0A1D" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="63" Width="348"/>
+                    <TextBox x:Name="textBoxWithdrawAmount" Margin="294,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="45" FontSize="24" HorizontalAlignment="Left" Width="434"/>
+                    <Label Content="Amount(in dollors):" HorizontalAlignment="Left" Margin="60,212,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Microsoft Sans Serif" OpacityMask="#FF0A0A1D" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="40" Width="214"/>
+                    <Button x:Name="buttonGridWithdrawWithdraw" Content="Withdraw" Margin="545,299,0,0" VerticalAlignment="Top" Height="45" FontSize="24" Background="Black" Foreground="#FFE7E7EE" HorizontalAlignment="Left" Width="186" Click="buttonGridWithdrawWithdraw_Click"/>
+                    <Button x:Name="buttonGridWithdrawBack" Content="Back" HorizontalAlignment="Left" Margin="628,536,0,0" VerticalAlignment="Top" Height="48" Width="153" Background="#B2FFFFFF" BorderBrush="#FF0C0101" Foreground="#FF0A0A1D" FontSize="24" FontFamily="Microsoft Sans Serif" Click="buttonGridWithdrawBack_Click"/>
+                </Grid>
+                <Grid x:Name="GridDeposit" Background="#FF0A0A1D" Height="Auto" Width="Auto">
+                    <Label Content="Deposit :" HorizontalAlignment="Left" Margin="22,23,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Microsoft Sans Serif" OpacityMask="#FF0A0A1D" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="63" Width="348"/>
+                    <TextBox x:Name="textBoxDepositAmount" Margin="294,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="45" FontSize="24" HorizontalAlignment="Left" Width="434"/>
+                    <Label Content="Amount(in dollors):" HorizontalAlignment="Left" Margin="60,212,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Microsoft Sans Serif" OpacityMask="#FF0A0A1D" Foreground="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="40" Width="214"/>
+                    <Button x:Name="buttonGridDepositDeposit" Content="Deposit" Margin="545,299,0,0" VerticalAlignment="Top" Height="45" FontSize="24" Background="Black" Foreground="#FFE7E7EE" HorizontalAlignment="Left" Width="186" Click="buttonGridDepositDeposit_Click"/>
+                    <Button x:Name="buttonGridDepositBack" Content="Back" HorizontalAlignment="Left" Margin="628,536,0,0" VerticalAlignment="Top" Height="48" Width="153" Background="#B2FFFFFF" BorderBrush="#FF0C0101" Foreground="#FF0A0A1D" FontSize="24" FontFamily="Microsoft Sans Serif" Click="buttonGridDepositBack_Click"/>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

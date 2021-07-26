@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿//################################################
+//## Author : Ehsan Espandar , github : EEzeus  ##
+//################################################
+using System.Windows;
 using Microsoft.VisualBasic;
 
 namespace ATM.ErrorsAndNotifications

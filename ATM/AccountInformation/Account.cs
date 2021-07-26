@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿//################################################
+//## Author : Ehsan Espandar , github : EEzeus  ##
+//################################################
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using ATM.ErrorsAndNotifications;
@@ -47,7 +50,6 @@ namespace ATM.AccountInformation
                     new ShowError().Show("Password Is Less Than 4 Characters !");
                 }else{
                     FileProcessor.SaveInfo(temp);
-                    new ShowNotification().Show("Account Was Created Successfully.");
                 }
             }
             else
@@ -59,15 +61,17 @@ namespace ATM.AccountInformation
         public static void DeleteAcc(Account user)
         {
             var accList = FileProcessor.ListingAccounts();
-            File.Delete(@"Account_Info.txt");
-           foreach (var acc in accList)
-           {
-               if (acc.Id != user.Id)
-               {
-                   FileProcessor.SaveInfo(acc);
-               }
-           }
-           new ShowNotification().Show("Account Was Deleted Successfully.");
+            using (var out_file = new StreamWriter(@"Account_Info.txt"))
+            {
+                out_file.WriteAsync("");
+            }
+            foreach (var acc in accList)
+                {
+                    if (acc.Id != user.Id)
+                    {
+                        FileProcessor.SaveInfo(acc);
+                    }
+                }
         }
     }
 }
